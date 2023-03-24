@@ -8,12 +8,13 @@ interface TodoService {
 }
 
 @Service
-class TodoServiceImpl:TodoService {
+class TodoServiceImpl(val todoRepository: TodoRepository):TodoService {
     override fun getTodos() :Todos{
-        return Todos(listOf(""))
+        var res =  todoRepository.findAll().map { it.todo }
+        return Todos(res)
     }
 
     override fun save(todo: String) {
-        TODO("Not yet implemented")
+        todoRepository.save(TodoRecord(todo=todo))
     }
 }

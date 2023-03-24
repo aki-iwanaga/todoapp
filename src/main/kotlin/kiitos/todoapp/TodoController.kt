@@ -32,13 +32,10 @@ class TodoController(
 			throw ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR)
 		}
 	}
-	@PostMapping("/{id}")
+	@PostMapping()
 	fun postTodo(
-		@PathVariable id: String,
 		@RequestBody param: TodoBody
 	){
-		println("aaaaa")
-//		todoService.save(param.todo)
-		todoService.save("")
+		todoService.save(param.todo)
 	}
 }

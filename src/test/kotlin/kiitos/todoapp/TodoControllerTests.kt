@@ -49,13 +49,13 @@ class TodoControllerTests {
 	}
 
 	@Test
-	fun `post要求された場合、200OKを返し、serviceのsaveを呼ぶ`() {
+	fun `post要求された場合、200OKを返し、serviceのsaveにBodyを渡して呼ぶ`() {
 //		GIVEN
 		val spyTodoService = SpyTodoServiceImpl()
 
 //		WHEN
 		makeSubject(spyTodoService)
-			.perform(MockMvcRequestBuilders.post("/api/todo/1")
+			.perform(MockMvcRequestBuilders.post("/api/todo")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content("""{"todo": "todo1"}""")
 			)
